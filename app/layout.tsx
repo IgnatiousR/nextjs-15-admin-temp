@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import AppSideBar from "@/components/app-side-bar";
 import NavBar from "@/components/nav-bar";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { cookies } from "next/headers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,22 +22,26 @@ export const metadata: Metadata = {
   description: "Admin panel created using Shadcn",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
   return (
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            <AppSideBar />
-            <main className="w-full">
-              <NavBar />
-              <div className="px-4">{children}</div>
-            </main>
+            <SidebarProvider defaultOpen={defaultOpen}>
+              <AppSideBar />
+              <main className="w-full">
+                <NavBar />
+                <div className="px-4">{children}</div>
+              </main>
+            </SidebarProvider>
           </ThemeProvider>
         </body>
       </html>

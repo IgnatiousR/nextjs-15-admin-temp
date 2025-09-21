@@ -15,12 +15,12 @@ import { ModeToggle } from "./mode-toggle";
 import { SidebarTrigger, useSidebar } from "./ui/sidebar";
 
 const NavBar = () => {
-  // const { toggleSidebar } = useSidebar();
+  const { toggleSidebar } = useSidebar();
   return (
     <nav className="p-4 flex items-center justify-between sticky top-0 bg-background z-10">
       {/* LEFT */}
       {/* <SidebarTrigger /> */}
-      <Button>
+      <Button onClick={toggleSidebar} variant="outline" size="icon">
         <ChevronRightIcon />
       </Button>
 
@@ -39,7 +39,7 @@ const NavBar = () => {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
-          <DropdownMenuContent sideOffset={10}>
+          <DropdownMenuContent sideOffset={15}>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
