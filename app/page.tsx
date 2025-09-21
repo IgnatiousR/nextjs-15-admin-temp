@@ -3,8 +3,9 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="h-screen flex items-center justify-center">
-      <Button>Click me</Button>
-    </div>
+    <div>Main Page</div>
+    // <div className="h-screen flex items-center justify-center">
+    //   <Button>Click me</Button>
+    // </div>
   );
 }
