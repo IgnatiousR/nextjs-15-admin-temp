@@ -124,6 +124,7 @@ const AppSidebar = () => {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
         {/* COLLAPSABLE */}
         <Collapsible defaultOpen className="group/collapsible">
           <SidebarGroup>
